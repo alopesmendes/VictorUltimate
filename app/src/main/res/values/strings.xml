@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name" translatable="false">VictorUltimate</string>
+    <string name="victor_ultimate_description">The ultimate app for cards</string>
+    <string name="victor_ultimate_title" translatable="false">Victor Ultimate</string>
+</resources>
