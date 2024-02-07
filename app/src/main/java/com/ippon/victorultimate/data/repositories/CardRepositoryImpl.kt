@@ -13,8 +13,9 @@ class CardRepositoryImpl @Inject constructor(
     private val cardService: CardService,
 ): CardRepository {
     override suspend fun getCardsModels(): List<CardModel> {
+        val language = Locale.current.language
         val response = cardService.getAllCards(
-            language = Locale.current.language
+            language = if (language == "en") null else language
         )
         if (!response.isSuccessful && response.errorBody() != null) {
             return emptyList()
@@ -23,9 +24,10 @@ class CardRepositoryImpl @Inject constructor(
     }
 
     override suspend fun getCardDetailModel(id: Int): CardDetailModel? {
+        val language = Locale.current.language
         val response = cardService.getCardInfo(
             id = id,
-            language = Locale.current.language
+            language = if (language == "en") null else language
         )
         if (!response.isSuccessful && response.errorBody() != null) {
             return null
